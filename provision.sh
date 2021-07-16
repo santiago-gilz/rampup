@@ -2,16 +2,16 @@
 
 # VARS
 APP=$1
+export BACK_HOST=$2
 set_vars () {
     if [ -z "$APP" ]; then
         echo "Error: which app are you provisioning (ui, api)"
         exit 1
     elif [ "$APP" = "ui" ]; then
-        if [ -z "$2" ]; then
+        if [ -z "$BACK_HOST" ]; then
             echo "Error: you need to provide an IP where the API is running as follows: $0 api 10.0.0.2"
             exit 1
         fi
-        export BACK_HOST=$2
     elif [ "$APP" = "api" ]; then
         export PORT='3000' 
     else
