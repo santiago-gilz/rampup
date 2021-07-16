@@ -28,8 +28,8 @@ Vagrant.configure("2") do |config|
             v.name = "ui"
         end
         machine.vm.provision "shell" do |s|
-           s.path = "provision.sh"
-            s.args   = "ui"
+            s.path = "provision.sh"
+            s.args   = ["ui", "192.168.1.3"]
         end
         machine.vm.network "forwarded_port", guest: 3030, host: 8080
     end
